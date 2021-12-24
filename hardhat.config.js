@@ -1,8 +1,8 @@
-require("@nomiclabs/hardhat-waffle");
+require('@nomiclabs/hardhat-waffle');
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
+task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners();
 
   for (const account of accounts) {
@@ -18,11 +18,20 @@ const ROPSTEN_PRIVATE_KEY = process.env.ROPSTEN_PRIVATE_KEY;
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  defaultNetwork: "ropsten",
-  solidity: "0.4.21",
+  defaultNetwork: 'ropsten',
+  solidity: {
+    compilers: [
+      {
+        version: '0.4.24',
+      },
+      {
+        version: '0.8.6',
+      },
+    ],
+  },
   networks: {
     ropsten: {
-      url: "https://ropsten.infura.io/v3/49cec425776345b184dff28cd3406820",
+      url: 'https://ropsten.infura.io/v3/49cec425776345b184dff28cd3406820',
       accounts: [ROPSTEN_PRIVATE_KEY],
       gas: 4712388,
     },
