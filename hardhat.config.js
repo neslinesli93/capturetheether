@@ -13,6 +13,7 @@ task('accounts', 'Prints the list of accounts', async (taskArgs, hre) => {
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 const ROPSTEN_PRIVATE_KEY = process.env.ROPSTEN_PRIVATE_KEY;
+const ACCOUNT_TAKEOVER_PKEY = process.env.ACCOUNT_TAKEOVER_PKEY;
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -32,7 +33,7 @@ module.exports = {
   networks: {
     ropsten: {
       url: 'https://ropsten.infura.io/v3/49cec425776345b184dff28cd3406820',
-      accounts: [ROPSTEN_PRIVATE_KEY],
+      accounts: [ROPSTEN_PRIVATE_KEY, ACCOUNT_TAKEOVER_PKEY],
       gas: 4712388,
     },
   },
